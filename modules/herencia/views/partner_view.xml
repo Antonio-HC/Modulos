@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<odoo>
+	<data>
+	<!--Agregar campo "edad" a partner_form-->
+	 <record id="fields" model="ir.ui.view">
+		<field name="name">base.view_partner_form.inherited</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"></field>
+		<field name="arch" type="xml">
+			<!--Especificar posicion de los campos-->
+			<xpath expr="//field[@name='name']" position="after">
+				<field name="edad" placeholder="Edad"/>
+			</xpath>
+		</field> 
+	 </record>
+
+	 <record model="ir.actions.act_window" id="contact_list">
+            <field name="name">Contacts</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form,kanban</field>
+         </record>
+
+	 <!--Vista de arbol--> 
+  	 <record model="ir.ui.view" id="partner_tree_view">
+		<field name="name">base.view_partner_tree</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_tree"/>
+		<field name="arch" type="xml">
+			<!--Especificar posicion de los campos-->
+                   	<xpath expr="//field[@name='display_name']" position="after">
+                                <field name="edad"/>
+                        </xpath>
+		</field>
+	 </record>
+
+	 <!--Crear menus-->
+	 <menuitem id="main_herencia_menu" name="My module" />
+	 <menuitem id="actions_menu" name="My module" />
+	 <menuitem id="contactos" name="Contactos" parent="actions_menu" action="contact_list" />
+	 
+	</data>
+</odoo>
+

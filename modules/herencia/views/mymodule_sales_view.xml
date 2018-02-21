@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="accounting_form" model="ir.ui.view">
+			<field name="name">res.partner.property.form.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="account.view_partner_property_form"></field>
+			<field name="arch" type="xml">
+				<!--Especificar posicion de los campos-->
+				<xpath expr="//field[@name='credit']" position="after">
+					<field name="fecha_cobro" placeholder="Fecha cobro"/>
+				</xpath>
+			</field> 
+		</record>
+	</data>
+</odoo>
